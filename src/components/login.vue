@@ -60,15 +60,13 @@ export default {
       }
     };
   },
-  
+
   methods: {
-    back () {
-      this.$router.push('/')
-    },
     submitForm(formName) {
+      debugger;
       this.$refs[formName].validate(valid => {
          if (valid) {
-
+           this.$router.push("/home");
          }
       })
     }
