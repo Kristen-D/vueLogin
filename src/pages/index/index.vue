@@ -1,16 +1,19 @@
 <template>
   <section class="data_section" ref="data_section">
     <el-row :gutter="10" class="row_list order_list">
-      <el-col :span="25">
+      <el-col :span="7">
         <log-lists></log-lists>
       </el-col>
-
+     <el-col :span="17">
+				<comment-list></comment-list>
+			</el-col>
     </el-row>
   </section>
 </template>
 <script>
   import { github } from "@/utils/env";
   import logLists from "./component/logLists";  // 日志列表
+  import commentList from "./component/commentList";  // 用户评论列表
 
 
   export default {
@@ -20,7 +23,8 @@
       };
     },
     components: {
-      logLists
+      logLists,
+      commentList
     }
   }
 </script>

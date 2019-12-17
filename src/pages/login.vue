@@ -63,10 +63,9 @@ export default {
 
   methods: {
     submitForm(formName) {
-      debugger;
       this.$refs[formName].validate(valid => {
          if (valid) {
-           this.$router.push("/home");
+           this.$router.push("/index");
          }
       })
     }
