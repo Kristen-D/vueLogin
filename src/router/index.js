@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import login from '@/pages/login'
 import home from '@/pages/index/home'
-import logList from '@/pages/index/component/logList'
+import logList from '@/pages/index/component/logLists'
 
 Vue.use(Router)
 
