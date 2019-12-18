@@ -28,7 +28,6 @@
   import { github } from "@/utils/env";
   export default {
     data() {
-      debugger
       return {
         logsData:logsData.data,
         github:github

@@ -14,6 +14,7 @@
 </template>
 
 <script>
+  import { mapState, mapGetters } from 'vuex'
   import LeftMenu from './leftMenu.vue';
   export default {
     name: 'home',
@@ -21,9 +22,13 @@
       return {
       }
     },
+    computed:{
+      ...mapGetters(['sidebar']),
+    },
     components:{
       LeftMenu,
     },
+
     created() {
     },
     mounted (){
