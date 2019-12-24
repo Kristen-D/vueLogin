@@ -38,6 +38,7 @@
         'permission_routers',
         'sidebar',
       ]),
+
     },
     created(){
     },

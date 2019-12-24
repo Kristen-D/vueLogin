@@ -2,7 +2,7 @@ import { asyncRouterMap, constantRouterMap } from '@/router'
 
 const permission = {
   state: {
-    routers: constantRouterMap,
+    routers: constantRouterMap.concat(asyncRouterMap),
     addRouters: [],
     topRouters:[],
     topTitle:'',

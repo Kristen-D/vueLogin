@@ -9,7 +9,6 @@ Vue.use(Router)
 
 //默认不需要权限的页面
 export const constantRouterMap = [
-  { path: '',component: Layout,redirect: '/index/index',hidden:true},
   {
     path: '/index',
     name: 'index',
@@ -39,6 +38,7 @@ export default new Router({
 })
 
 export const asyncRouterMap = [
+
   {path:'/userManager',name: 'userManage',component:Layout},
   {path:'/share',name: 'share',component:Layout},
   {path:'/infoManage',name: 'infoManage',component:Layout},

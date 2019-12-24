@@ -2,7 +2,7 @@
   <div class="home rflex">
     <left-menu></left-menu>
     <div class="menu_right wflex el-scrollbar" ref="menu_right" :style="{left:sidebar.width+'px'}">
-      <!--<head-nav></head-nav>-->
+      <head-nav></head-nav>
       <div class="menu_content" ref="menu_content">
         <!--<bread></bread>-->
         <router-view></router-view><!--页面渲染入口-->
@@ -16,6 +16,7 @@
 <script>
   import { mapState, mapGetters } from 'vuex'
   import LeftMenu from './leftMenu.vue';
+  import HeadNav from './headNav.vue';
   export default {
     name: 'home',
     data(){
@@ -27,6 +28,7 @@
     },
     components:{
       LeftMenu,
+      HeadNav
     },
 
     created() {
