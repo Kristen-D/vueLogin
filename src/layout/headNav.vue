@@ -2,6 +2,64 @@
   <header class="head-nav rflex " :style="{'width':headNavWidth+'px'}" id='header_container'>
     <div class="right-nav" ref="rightNav">
       <top-menu></top-menu>
+      <div class="userinfo-right rflex">
+        <div class="notify-row">
+          <ul class="top-menu">
+            <li class="li-badge">
+              <el-tooltip class="item" effect="dark" content="访问github" placement="top">
+                <a :href='github' target="_blank">
+                  <icon-svg icon-class="iconGithub" />
+                </a>
+              </el-tooltip>
+            </li>
+            <li class="li-badge">
+              <a :href='github' target="_blank" v-popover:qcode>
+                <icon-svg icon-class="iconwechat" />
+                <el-popover
+                  ref="qcode"
+                  popper-class="qcodepopper"
+                  placement="bottom"
+                  trigger="hover">
+                  <div class="wechat-area cflex">
+                    <p class="titles">加我微信</p>
+                    <img :src="wechat.wechatImg" alt="加我微信"  />
+                  </div>
+                </el-popover>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="userinfo">
+          <el-menu class="el-menu-demo" mode="horizontal">
+            <el-submenu index="1" popper-class="langItem">
+              <template slot="title">
+                <img :src="langLogo" class='langAvatar' alt="">
+              </template>
+              <el-menu-item index="1-1" @click="changeLocale('zh')">
+                <img :src="chinaImg" class='langAvatar' alt="">
+                <span class="intro">中文</span>
+              </el-menu-item>
+              <el-menu-item index="1-2" @click="changeLocale('en')">
+                <img :src="americaImg" class='langAvatar' alt="">
+                <span class="intro">EngList</span>
+              </el-menu-item>
+            </el-submenu>
+
+            <el-submenu index="2"  popper-class="infoItem">
+              <template slot="title">
+                <div class='welcome'>
+                  <span class="name">{{$t('commons.hi')}},</span>
+                  <span class='name avatarname'> {{ $t(`commons.admin`)}}</span>
+                </div>
+                <img :src="avatar" class='avatar' alt="">
+              </template>
+              <el-menu-item index="2-1" @click="setDialogInfo('info')">{{ $t('commons.infoShow') }}</el-menu-item>
+              <el-menu-item index="2-2" @click="setDialogInfo('pass')">{{ $t('commons.infoModify') }}</el-menu-item>
+              <el-menu-item index="2-3" @click="setDialogInfo('logout')">{{ $t('commons.quit') }}</el-menu-item>
+            </el-submenu>
+          </el-menu>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -9,10 +67,28 @@
 <script>
   import { mapGetters } from "vuex";
   import topMenu from './topMenu';
-
+  import { github } from "@/utils/env";
+  import wechatImg from "@/assets/img/wechat.jpg";
+  import qqImg from "@/assets/img/qq.png";
+  import logoImg from "@/assets/img/logo.png";
+  import chinaImg from "@/assets/img/china.svg";
+  import americaImg from "@/assets/img/america.svg";
+  import { setToken,getToken } from '@/utils/auth'
 
   export default {
     name: 'head-nav',
+    data() {
+      return {
+        github: github,
+        wechat:{
+          wechatImg:wechatImg,
+          isWechat:false
+        },
+        langLogo: americaImg,
+        chinaImg:chinaImg,
+        americaImg:americaImg,
+      }
+    },
     components:{
       topMenu
     },
@@ -26,6 +102,35 @@
     },
     mounted(){
     },
+    methods:{
+      changeLocale(type){
+        setToken('lang',type);
+        this.$i18n.locale = type;
+        if(type === 'en'){
+          this.langLogo = this.americaImg;
+        }else{
+          this.langLogo = this.chinaImg;
+        }
+        setToken('langLogo',this.langLogo);
+      },
+      /**
+       * 弹出框-修改密码或者系统设置
+       * @param {string} cmditem 弹框类型
+       */
+      setDialogInfo(cmditem) {
+        switch (cmditem) {
+          case 'info':
+            this.$router.push('/infoManage/infoShow/infoShow1');
+            break;
+          case 'pass':
+            this.$router.push('/infoManage/infoModify/infoModify1');
+            break;
+          case 'logout':
+            this.logout();
+            break;
+        }
+      },
+    }
   }
 </script>
 

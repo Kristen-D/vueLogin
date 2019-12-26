@@ -8,7 +8,7 @@ import App from './App'
 import store from './store/'
 import router from './router'
 import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import('element-ui/lib/theme-chalk/index.css')
 import i18n from '@/lang';
 
 import './components/iconSvg' // iconSvg
