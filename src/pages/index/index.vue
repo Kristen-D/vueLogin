@@ -91,6 +91,7 @@
   import { github } from "@/utils/env";
   import logLists from "./component/logLists";  // 日志列表
   import commentList from "./component/commentList";  // 用户评论列表
+  import salesTable from "./component/salesTable";  // 销售数据表格
 
 
   export default {
@@ -101,7 +102,8 @@
     },
     components: {
       logLists,
-      commentList
+      commentList,
+      salesTable
     }
   }
 </script>
