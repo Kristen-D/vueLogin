@@ -75,14 +75,15 @@
       <el-col :span="7">
         <log-lists></log-lists>
       </el-col>
-     <el-col :span="17">
-				<comment-list></comment-list>
-			</el-col>
+
     </el-row>
 
     <el-row :gutter="10" class="row_list">
       <el-col :span="11">
         <sales-table></sales-table>
+      </el-col>
+      <el-col :span="7">
+        <comment-list></comment-list>
       </el-col>
     </el-row>
   </section>

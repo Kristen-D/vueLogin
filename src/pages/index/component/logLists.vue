@@ -21,7 +21,8 @@
               </div>
           </div>
       </div>
-  </el-card></div>
+    </el-card>
+  </div>
 </template>
 <script>
   import logsData from "@/assets/datas/logs.json";
