@@ -75,6 +75,9 @@
       <el-col :span="7">
         <log-lists></log-lists>
       </el-col>
+      <el-col :span="17">
+        <bar-chart type="barChart"></bar-chart>
+      </el-col>
 
     </el-row>
 
@@ -93,6 +96,7 @@
   import logLists from "./component/logLists";  // 日志列表
   import commentList from "./component/commentList";  // 用户评论列表
   import salesTable from "./component/salesTable";  // 销售数据表格
+  import barChart from "../../components/echarts/barChart" // 用户投资类型 柱状图
 
 
   export default {
@@ -104,7 +108,8 @@
     components: {
       logLists,
       commentList,
-      salesTable
+      salesTable,
+      barChart
     }
   }
 </script>

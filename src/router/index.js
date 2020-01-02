@@ -40,7 +40,27 @@ export default new Router({
 export const asyncRouterMap = [
 
   {path:'/userManager',name: 'userManage',component:Layout},
-  {path:'/share',name: 'share',component:Layout},
+  {
+    path:'/share',
+    name: 'share',
+    component:Layout,
+    meta: {
+      title:'分享功能',
+      icon: 'iconshare',
+    },
+    noDropdown:true,
+    children:[
+      {
+        path:'share',
+        meta:{
+          title:'分享功能',
+          icon:'iconshare',
+          routerType:'leftmenu'
+        },
+        component: () => import('@/pages/share'),
+      }
+    ]
+  },
   {path:'/infoManage',name: 'infoManage',component:Layout},
   {path:'/infoModify',name: 'infoModify',component:Layout},
   {path:'/fundManage',name: 'fundManage',component:Layout},
