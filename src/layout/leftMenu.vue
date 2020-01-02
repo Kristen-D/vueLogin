@@ -7,11 +7,24 @@
       <div class="menu_page_bottom is-scroll-left">
         <el-menu
           mode="vertical"
-          theme="dark">
+          theme="dark"
+          :show-timeout="200"
+          :default-active="$route.path"
+          :background-color="menuObj.bgColor"
+          :text-color="menuObj.textColor"
+          :active-text-color="menuObj.activeTextColor"
+          :style="{width:sidebar.width+'px'}"
+        >
           <template v-for="(item,index) in permission_routers" >
-              <el-menu-item class="dropItem">
-                <span>{{ $t(`commons.${item.name}`)}}</span>
+            <!--表示 有一级菜单-->
+            <router-link v-if="!item.hidden && item.noDropdown" :to="item.path+'/'+item.children[0].path" :key="index">
+              <el-menu-item class="dropItem"
+                            :index="item.path+'/'+item.children[0].path"
+              >
+                <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
+                <span v-if="item.meta.title" slot="title">{{ $t(`commons.${item.name}`)}}</span>
               </el-menu-item>
+            </router-link>
           </template>
         </el-menu>
       </div>

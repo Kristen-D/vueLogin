@@ -13,6 +13,10 @@ import i18n from '@/lang';
 
 import './components/iconSvg' // iconSvg
 
+// 分享功能集合
+import { shareConfig } from './utils/share';
+Vue.prototype.shareConfig = shareConfig;
+
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 

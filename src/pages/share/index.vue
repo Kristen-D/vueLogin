@@ -1,15 +1,16 @@
 <template>
   <div class="shareContainer" ref="shareContainer">
+    donglt
     <el-row>
-      <el-col :span="6">
-        <heng-share @shareToQQ="shareToQQ" @shareToQQzone="shareToQQzone" @shareToWeibo="shareToWeibo" @shareToDouban="shareToDouban"></heng-share>
-      </el-col>
+
     </el-row>
   </div>
 </template>
 
 <script>
+  import * as mutils from '@/utils/mUtils'
   import { HengShare } from "./components";
+
   export default {
     name: 'index',
     data(){
@@ -23,6 +24,10 @@
     },
     components: {
       HengShare
+    },
+    mounted(){
+      debugger;
+      mutils.setContentHeight(this,this.$refs.shareContainer,210);
     },
     methods: {
       shareToQQ(){

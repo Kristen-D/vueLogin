@@ -34,14 +34,8 @@ const permission = {
     GenerateRoutes({ commit }, data) {
       return new Promise(resolve => {
         let roles = data.roles;
-        let accessedRouters = '';
-        if (roles.indexOf('admin') >= 0) {
+        let accessedRouters = asyncRouterMap;
           // 如果是管理员，直接将权限路由赋值给新路由;
-          accessedRouters = asyncRouterMap
-        } else {
-          // 非管理员用户,如roles:['editor','developer']，则需要过滤权限路由数据
-          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
-        }
         commit('SET_ROUTERS', accessedRouters)
         resolve()
       })

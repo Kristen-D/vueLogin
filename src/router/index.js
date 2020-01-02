@@ -57,7 +57,7 @@ export const asyncRouterMap = [
           icon:'iconshare',
           routerType:'leftmenu'
         },
-        component: () => import('@/pages/share'),
+        component: () => import('../pages/share/index.vue'),
       }
     ]
   },
