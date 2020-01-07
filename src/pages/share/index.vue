@@ -26,7 +26,7 @@
       HengShare
     },
     mounted(){
-      debugger;
+
       mutils.setContentHeight(this,this.$refs.shareContainer,210);
     },
     methods: {
