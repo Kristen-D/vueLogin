@@ -74,7 +74,8 @@ export const asyncRouterMap = [
           title:'用户管理',
           icon:'iconuser',
           routerType:'leftmenu'
-        }
+        },
+        component: () => import('@/pages/userList/userList'),
       }
     ]
   },
