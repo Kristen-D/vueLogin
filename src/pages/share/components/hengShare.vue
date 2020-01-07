@@ -8,6 +8,31 @@
           <div class="item" @mouseover="showqrcode()" @mouseout="hideqrcode()">
             <icon-svg icon-class="iconwechat" />
           </div>
+          <div class="qrcodeArea" v-show="qrcode.show">
+            <p class="saoTitle">扫一扫</p>
+            <div class="qrcode" id="qrCodeUrl"></div>
+          </div>
+        </li>
+        <li>
+          <div class="item" @click="shareToWeibo()">
+            <icon-svg icon-class="iconweibo" />
+          </div>
+        </li>
+        <li>
+          <div class="item" @click="shareToQQ()">
+            <icon-svg icon-class="iconqq" />
+          </div>
+        </li>
+        <li>
+          <div class="item" @click="shareToQQzone()">
+            <icon-svg icon-class="iconqq_zone" />
+          </div>
+        </li>
+
+        <li>
+          <div class="item" @click="shareToDouban()">
+            <icon-svg icon-class="icondouban" />
+          </div>
         </li>
       </ul>
     </div>
@@ -32,6 +57,35 @@
         }
       }
     },
+    mounter() {
+      this.creatQrCode();
+    },
+    methods: {
+      showqrcode(){
+        this.qrcode.show  = true;
+      },
+      hideqrcode(){
+        this.qrcode.show  = false;
+      },
+      creatQrCode() {
+        this.$nextTick(() => {
+          new QRCode(document.getElementById('qrCodeUrl'), this.qrcodeObj)
+        });
+      },
+      shareToQQ(){
+        this.$emit('shareToQQ');
+      },
+      shareToQQzone(){
+        this.$emit('shareToQQzone');
+      },
+      shareToWeibo(){
+        this.$emit('shareToWeibo');
+      },
+      shareToDouban(){
+        this.$emit('shareToDouban');
+      }
+
+    }
   }
 </script>
 
@@ -104,5 +158,7 @@
         }
       }
     }
+
   }
+
 </style>

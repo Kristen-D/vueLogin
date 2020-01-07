@@ -1,8 +1,9 @@
 <template>
   <div class="shareContainer" ref="shareContainer">
-    donglt
-    <el-row>
-
+    <el-row :gutter="20">
+      <el-col :span="6">
+        <heng-share @shareToQQ="shareToQQ" @shareToQQzone="shareToQQzone" @shareToWeibo="shareToWeibo" @shareToDouban="shareToDouban"></heng-share>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -32,6 +33,15 @@
     methods: {
       shareToQQ(){
         this.shareConfig('qq')
+      },
+      shareToQQzone(){
+        this.shareConfig('qqZone')
+      },
+      shareToWeibo(){
+        this.shareConfig('weibo')
+      },
+      shareToDouban(){
+        this.shareConfig('douban')
       }
     }
   }
