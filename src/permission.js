@@ -33,7 +33,6 @@ router.beforeEach((to, from, next) => {
       if (store.getters.roles.length === 0) {
         let token = getToken('Token');
         getUserInfo({"token":token}).then().then(res => { // 根据token拉取用户信息
-          debugger;
           let userList = res.data.userList;
           store.commit("SET_ROLES",userList.roles);
           store.commit("SET_NAME",userList.name);
@@ -43,7 +42,6 @@ router.beforeEach((to, from, next) => {
             next({ ...to, replace: true }) // hack方法 确保addRoutes已完成
           })
         }).catch((err) => {
-          debugger;
           store.dispatch('LogOut').then(() => {
             Message.error('Verification failed, please login again')
             next({ path: '/' })

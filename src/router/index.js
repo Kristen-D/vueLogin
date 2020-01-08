@@ -6,7 +6,6 @@ process.env.NODE_ENV === "development" ? Vue.use(Router) : null;
 
 
 function filterTopRouterMap(name){
-  debugger;
   let router = topRouterMap.find((item) => {
     return item.parentName === name;
   });

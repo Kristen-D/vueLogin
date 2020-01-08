@@ -64,7 +64,6 @@ export default {
   },
   // 获取登录用户信息
   getUserInfo:config => {
-    debugger;
     let data = JSON.parse(config.body);
     let userList = {};
     if(data.token === 'admin'){

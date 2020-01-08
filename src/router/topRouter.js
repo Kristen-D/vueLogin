@@ -61,8 +61,8 @@ export const topRouterMap = [
           title:'修改信息子菜单1',
           icon:'fa-asterisk',
           routerType:'topmenu'
-        }/*,
-        component: () => import('@/pages/infoManage/infoModify')*/
+        },
+        component: () => import('@/pages/infoManage/infoModify')
       },
       {
         path:'infoModify2',
