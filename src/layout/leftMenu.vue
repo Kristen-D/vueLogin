@@ -25,6 +25,20 @@
                 <span v-if="item.meta.title" slot="title">{{ $t(`commons.${item.name}`)}}</span>
               </el-menu-item>
             </router-link>
+            <el-submenu v-if="item.children  && item.children.length >= 1 && !item.hidden && !item.noDropdown" :index ="item.path" :key="index">
+              <template slot="title">
+                <icon-svg v-if="item.meta.icon" :icon-class="item.meta.icon" />
+                <span v-if="item.meta.title" slot="title">{{ $t(`commons.${item.name}`)}}</span>
+              </template>
+              <router-link v-for="(citem,cindex) in item.children" :to="getIindex(citem,item,cindex)"  :key="cindex">
+                <el-menu-item
+                  v-if="citem.meta.routerType != 'topmenu' && citem.meta.title"
+                  :index="getIindex(citem,item,cindex)">
+                  <span slot="title"> {{ $t(`commons.${citem.name}`)}}</span>
+                </el-menu-item>
+              </router-link>
+
+            </el-submenu>
           </template>
         </el-menu>
       </div>

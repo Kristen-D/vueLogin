@@ -1,9 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import { Layout,Content }  from "../layout"; // 页面整体布局
+import { topRouterMap } from "./topRouter";
 process.env.NODE_ENV === "development" ? Vue.use(Router) : null;
 
 
+function filterTopRouterMap(name){
+  debugger;
+  let router = topRouterMap.find((item) => {
+    return item.parentName === name;
+  });
+  return router.data; // arr
+}
 /**
  * 1、roles:后台返回的权限结构;
  *
@@ -124,8 +132,8 @@ export const asyncRouterMap = [
             {"path":"infoShow5","title":"个人信息子菜单5"}
           ]
         },
-        component:Content
-        //children:filterTopRouterMap('infoShow')
+        component:Content,
+        children:filterTopRouterMap('infoShow')
       },
       {
         path:'infoModify',
@@ -140,8 +148,8 @@ export const asyncRouterMap = [
             {"path":"infoModify3","title":"修改信息子菜单3"}
           ]
         },
-        component:Content
-       // children:filterTopRouterMap('infoModify')
+        component:Content,
+        children:filterTopRouterMap('infoModify')
       }
     ]
   },
