@@ -167,7 +167,8 @@ export const asyncRouterMap = [
         meta: {
           title:'资金流水',
           routerType:'leftmenu'
-        }
+        },
+        component: () => import('@/pages/fundList/fundList'),
       },
       {
         path:'chinaTabsList',
